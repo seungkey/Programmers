@@ -1,9 +1,10 @@
 def solution(number, k):
-    a=list(number)
-    while(len(a)>len(number)-k):
-        for i in range(len(number)-1):
-            if(a[i]<a[i+1]):
-                del a[i]
-                break
+    a=[number[0]]
+    for i in number[1:]:
+        while len(a)>0 and a[-1]<i and k>0:
+            k-=1
+            a.pop()
+        a.append(i)
+    a=a[:-k] if k>0 else a
     answer=''.join(a)
     return answer
