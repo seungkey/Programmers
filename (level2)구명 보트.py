@@ -1,18 +1,13 @@
 def solution(people, limit):
-    answer = 0
-    save=[]
-    a=0
-    boat=[]
+    answer = len(people)
     people.sort()
-    while(len(people)>0):
-        a=0
-        a=sum(boat)
-        a+=people[0]
-        if(a<=limit and len(boat)<2):
-            boat.append(people.pop(0))
-        elif(a>limit or len(boat)>=2):
-            save.append(boat)
-            boat=[]
-        print(a,boat,save)
-    answer=len(save)+1
+    a=0
+    b=len(people)-1
+    while(a<b):
+        if(people[a]+people[b]<=limit):
+            a+=1
+            b-=1
+            answer-=1
+        elif(people[a]+people[b]>limit):
+            b-=1
     return answer
